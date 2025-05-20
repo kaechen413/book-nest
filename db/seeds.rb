@@ -21,7 +21,8 @@ data["docs"].each do |item|
   Book.create!(
     title: item["title"],
     author: item["author_name"]&.first,
-    published_year: item["first_publish_year"]
+    published_year: item["first_publish_year"],
+    availability: true
   )
 end
 
