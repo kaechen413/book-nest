@@ -3,8 +3,7 @@
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <!-- Logo -->
     <%= image_tag "BookNestLogo.png", alt: "BookNest Logo", style: "height: 80px;" %>
-
-    <!-- Avatar + Label -->
+    <!-- Avatar (Login + Label) -->
     <div style="text-align: center;">
       <%= link_to new_user_session_path do %>
         <%= image_tag "Avatar.png", alt: "Login", style: "height: 50px; border-radius: 50%; border: 2px solid #606C38;" %>
@@ -12,13 +11,13 @@
       <small style="display: block; font-size: 12px; color: #606C38;">Login / Sign Up</small>
     </div>
   </div>
-
   <!-- Search field -->
   <div style="margin-top: 20px;">
     <input type="text" placeholder="Search for a book..."
       style="padding: 12px; border-radius: 10px; border: 2px solid #DDA15E; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); width: 100%; font-size: 16px;">
   </div>
 </section>
+<<<<<<< HEAD
 
 <!-- Book Cards Section -->
 <section style="padding: 20px; padding-bottom: 100px; background-color: #FFEFAE0;">
@@ -28,5 +27,66 @@
     <% end %>
   <% else %>
     <p>No books found.</p>
+=======
+<!-- Cards -->
+<section style="padding: 20px; padding-bottom: 100px; background-color: #FEFAE0;">
+  <% 3.times do %>
+    <div style="display: flex; margin-bottom: 20px; border: 1px solid #DDA15E; border-radius: 10px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); background-color: #fff;">
+      <div style="flex: 1;">
+        <div style="width: 100%; height: 150px; background-color: #BC6C25; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"></div>
+      </div>
+      <div style="flex: 2; padding: 15px 15px 60px 15px; position: relative;">
+        <h2 style="margin-top: 0; color: #283618;">Book Title</h2>
+        <p><strong style="color: #606C38;">Author Name</strong></p>
+        <p style="color: #333;">This is a short description of the book. It gives a preview of what it's about.</p>
+        <p style="position: absolute; top: 10px; right: 10px; font-size: 13px; color: #BC6C25;">12 May 2025<br>
+          Tokyo</p>
+        <button style="
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background-color: #606C38;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          white-space: nowrap;"
+          onmouseover="this.style.backgroundColor='#283618'"
+          onmouseout="this.style.backgroundColor='#606C38'">
+          Rent me!
+        </button>
+      </div>
+    </div>
+>>>>>>> 4799f7843b2fd4a21cfee57e16343b7a419bae71
   <% end %>
 </section>
+<!-- Bottom Navigation -->
+<footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: #DDA15E; display: flex; justify-content: space-around; padding: 12px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); color: #283618;">
+  <div style="text-align: center;">
+    <%= link_to "#", style: "color: #283618; text-decoration: none;" do %>
+      <i class="fas fa-book" style="font-size: 20px;"></i>
+      <p style="margin: 0; font-size: 14px;">My Books</p>
+    <% end %>
+  </div>
+  <div style="text-align: center;">
+    <%= link_to "#", style: "color: #283618; text-decoration: none;" do %>
+      <i class="fas fa-book-reader" style="font-size: 20px;"></i>
+      <p style="margin: 0; font-size: 14px;">Rented</p>
+    <% end %>
+  </div>
+  <div style="text-align: center;">
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path, style: "color: #283618; text-decoration: none;" do %>
+        <i class="fas fa-cog" style="font-size: 20px;"></i>
+        <p style="margin: 0; font-size: 14px;">My Settings</p>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, style: "color: #283618; text-decoration: none;" do %>
+        <i class="fas fa-sign-in-alt" style="font-size: 20px;"></i>
+        <p style="margin: 0; font-size: 14px;">Login / Sign Up</p>
+      <% end %>
+    <% end %>
+  </div>
+</footer>

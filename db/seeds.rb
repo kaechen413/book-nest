@@ -29,6 +29,7 @@ data = JSON.parse(response)
 created_count = 0
 
 data["docs"].each do |item|
+<<<<<<< HEAD
   begin
     Book.create!(
       user: user,
@@ -45,5 +46,41 @@ end
 
 puts "✅ Created #{created_count} books from API"
 
+=======
+  Book.create!(
+    title: item["title"],
+    author: item["author_name"]&.first,
+    published_year: item["first_publish_year"],
+    availability: true
+  )
+end
+
+user_first = User.first
+user_last = User.last
+books = Book.limit(10)
+
+# Create 10 book offers by User.first
+book_offers = books.map.with_index do |book, i|
+  BookOffer.create!(
+    availability: i.even?, # alternate true/false
+    description: "Book offer ##{i + 1} by #{user_first.user_name}",
+    user: user_first,
+    book: book
+  )
+end
+
+# Create 5 bookings with User.last, each for a different book offer
+book_offers.first(5).each_with_index do |offer, i|
+  Booking.create!(
+    starting_date: Date.today + i,
+    ending_date: Date.today + i + 7,
+    status: :pending,
+    user: user_last,
+    book_offer: offer
+  )
+end
+
+puts "Fetched #{data['docs'].length} books from API"
+>>>>>>> 4799f7843b2fd4a21cfee57e16343b7a419bae71
 
 # put user seeds, faker, down here!
