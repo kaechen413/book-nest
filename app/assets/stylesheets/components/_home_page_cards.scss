@@ -1,0 +1,65 @@
+.card-book {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .card-book-infos {
+    padding: 16px;
+    position: relative;
+    width: 100%;
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      color: $color-text-dark;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 1.4;
+      opacity: 0.7;
+      margin: 8px 0 0 0;
+    }
+
+    .card-book-meta {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: $color-secondary;
+      text-align: right;
+    }
+
+    .card-book-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: $color-primary;
+      color: $color-text-light;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $color-hover;
+      }
+    }
+  }
+}

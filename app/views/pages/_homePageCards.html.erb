@@ -1,0 +1,12 @@
+<div class="card-book">
+  <%= image_tag book.image_url, alt: book.title %>
+  <div class="card-book-infos">
+    <h2><%= book.title %></h2>
+    <p><strong><%= book.author %></strong></p>
+    <p><%= truncate(book.description, length: 100) %></p>
+    <div class="card-book-meta">
+      <%= book.created_at.strftime("%d %b %Y") %><br><%= book.location %>
+    </div>
+    <%= link_to "Rent me!", book_path(book), class: "card-book-button" %>
+  </div>
+</div>
