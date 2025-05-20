@@ -3,7 +3,6 @@
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <!-- Logo -->
     <%= image_tag "BookNestLogo.png", alt: "BookNest Logo", style: "height: 80px;" %>
-
     <!-- Avatar (Login + Label) -->
     <div style="text-align: center;">
       <%= link_to new_user_session_path do %>
@@ -12,14 +11,12 @@
       <small style="display: block; font-size: 12px; color: #606C38;">Login / Sign Up</small>
     </div>
   </div>
-
   <!-- Search field -->
   <div style="margin-top: 20px;">
     <input type="text" placeholder="Search for a book..."
       style="padding: 12px; border-radius: 10px; border: 2px solid #DDA15E; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); width: 100%; font-size: 16px;">
   </div>
 </section>
-
 <!-- Cards -->
 <section style="padding: 20px; padding-bottom: 100px; background-color: #FEFAE0;">
   <% 3.times do %>
@@ -31,7 +28,8 @@
         <h2 style="margin-top: 0; color: #283618;">Book Title</h2>
         <p><strong style="color: #606C38;">Author Name</strong></p>
         <p style="color: #333;">This is a short description of the book. It gives a preview of what it's about.</p>
-        <p style="position: absolute; top: 10px; right: 10px; font-size: 13px; color: #BC6C25;">12 May 2025<br>Tokyo</p>
+        <p style="position: absolute; top: 10px; right: 10px; font-size: 13px; color: #BC6C25;">12 May 2025<br>
+          Tokyo</p>
         <button style="
           position: absolute;
           bottom: 10px;
@@ -52,17 +50,16 @@
     </div>
   <% end %>
 </section>
-
 <!-- Bottom Navigation -->
 <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: #DDA15E; display: flex; justify-content: space-around; padding: 12px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); color: #283618;">
   <div style="text-align: center;">
-    <%= link_to my_books_path, style: "color: #283618; text-decoration: none;" do %>
+    <%= link_to "#", style: "color: #283618; text-decoration: none;" do %>
       <i class="fas fa-book" style="font-size: 20px;"></i>
       <p style="margin: 0; font-size: 14px;">My Books</p>
     <% end %>
   </div>
   <div style="text-align: center;">
-    <%= link_to rented_books_path, style: "color: #283618; text-decoration: none;" do %>
+    <%= link_to "#", style: "color: #283618; text-decoration: none;" do %>
       <i class="fas fa-book-reader" style="font-size: 20px;"></i>
       <p style="margin: 0; font-size: 14px;">Rented</p>
     <% end %>
