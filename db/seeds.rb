@@ -7,3 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'json'
+require 'open-uri'
+puts "Cleaning the DB...."
+Book.destroy_all
+
+url = URI("https://openlibrary.org/search.json?publisher=penguin")
+response = URI.open(url).read
+data = JSON.parse(response)
+
+data["docs"].each do |item|
+  Book.create!(
+    user: User.first,
+    title: item["title"],
+    author: item["author_name"]&.first,
+    published_year: item["first_publish_year"],
+    availability: true
+  )
+end
+
+puts "Fetched #{data['docs'].length} books from API"
+
+# put user seeds, faker, down here!
