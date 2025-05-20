@@ -13,7 +13,7 @@
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     <p>
       <% if @book_offer.availability == true %>
-        <button type="button" class="btn btn-primary">Get this book</button>
+        <%= link_to "Get this book", new_book_offer_booking_path(@book_offer, @booking), class:"btn btn-primary"  %>
       <% else %>
         <button type="button" class="btn btn-warning">Unavailable</button>
       <% end %>
