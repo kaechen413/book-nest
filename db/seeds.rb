@@ -19,11 +19,9 @@ data = JSON.parse(response)
 
 data["docs"].each do |item|
   Book.create!(
-    user: User.first,
     title: item["title"],
     author: item["author_name"]&.first,
-    published_year: item["first_publish_year"],
-    availability: true
+    published_year: item["first_publish_year"]
   )
 end
 
