@@ -1,9 +1,10 @@
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
-@import "config/bootstrap_variables";
+
 
 // External libraries
+@import "config/bootstrap_variables";
 @import "bootstrap";
 @import "font-awesome";
 
@@ -12,3 +13,5 @@
 @import "pages/index";
 
 @import "config/colors";
+// En application.scss
+@import "components/home_page_cards";
