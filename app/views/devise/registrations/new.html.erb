@@ -6,7 +6,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :user_name,
+                required: true,
+                input_html: { autocomplete: "address" }%>
     <%= f.input :address,
+                required: true,
                 input_html: { autocomplete: "address" }%>
     <%= f.input :password,
                 required: true,
