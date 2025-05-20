@@ -1,1 +1,23 @@
-<p>hello</p>
+<div class="container">
+  <div class="card-trip">
+    <img src="https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=754&fit=clip" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @book_offer.book.title %> by <%= @book_offer.book.author %></h2>
+        <p>Published: <%= @book_offer.book.published_year %></p>
+        <p><%= @book_offer.description %></p>
+        <p><%- @book_offer.book.published_year %></p>
+        <p>"Reviews will go here"</p>
+      </div>
+    </h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <p>
+      <% if @book_offer.availability == true %>
+        <button type="button" class="btn btn-primary">Get this book</button>
+      <% else %>
+        <button type="button" class="btn btn-warning">Unavailable</button>
+      <% end %>
+    </p>
+  </div>
+</div>
+</div>
