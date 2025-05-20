@@ -29,24 +29,6 @@ data = JSON.parse(response)
 created_count = 0
 
 data["docs"].each do |item|
-<<<<<<< HEAD
-  begin
-    Book.create!(
-      user: user,
-      title: item["title"],
-      author: item["author_name"]&.first,
-      published_year: item["first_publish_year"],
-      availability: true
-    )
-    created_count += 1
-  rescue => e
-    puts " Skipped: #{item['title']} - #{e.message}"
-  end
-end
-
-puts "✅ Created #{created_count} books from API"
-
-=======
   Book.create!(
     title: item["title"],
     author: item["author_name"]&.first,
@@ -81,6 +63,5 @@ book_offers.first(5).each_with_index do |offer, i|
 end
 
 puts "Fetched #{data['docs'].length} books from API"
->>>>>>> 4799f7843b2fd4a21cfee57e16343b7a419bae71
 
 # put user seeds, faker, down here!
