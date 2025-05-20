@@ -1,0 +1,16 @@
+<!-- app/views/pages/_home_page_cards.html.erb -->
+<div class="card-book">
+  <%= image_tag "default_book.jpg", alt: book.title %>
+
+  <div class="card-book-infos">
+    <h2><%= book.title %></h2>
+    <p><strong><%= book.author %></strong></p>
+
+    <div class="card-book-meta">
+      Published: <%= book.published_year %><br>
+      <%= book.created_at.strftime("%d %b %Y") %>
+    </div>
+
+    <%= link_to "Rent me!", book_path(book), class: "card-book-button" %>
+  </div>
+</div>

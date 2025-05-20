@@ -7,15 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Creating default user..."
+User.destroy_all
+user = User.create!(email: "test@example.com", password: "123456")
 
 require 'json'
 require 'open-uri'
+
 puts "Cleaning the DB...."
 Book.destroy_all
+User.destroy_all
 
+puts "Creating default user..."
+user = User.create!(email: "test@example.com", password: "123456")
+
+puts "Fetching books from Open Library..."
 url = URI("https://openlibrary.org/search.json?publisher=penguin")
 response = URI.open(url).read
 data = JSON.parse(response)
+
+created_count = 0
 
 data["docs"].each do |item|
   Book.create!(
