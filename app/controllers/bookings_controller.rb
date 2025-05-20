@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = current_user.bookings
+  end
+
   def new
     @book_offer = BookOffer.find(params[:book_offer_id])
     @booking = Booking.new
@@ -20,9 +24,8 @@ class BookingsController < ApplicationController
     end
   end
 
-  def index
-    raise
-    @bookings = Booking.all
+  def owner
+    @bookings_as_owner = current_user.bookings_as_owner
   end
 
   private
