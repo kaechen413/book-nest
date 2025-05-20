@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @books = Book.all
+    @book_offers = BookOffer.all
   end
 end

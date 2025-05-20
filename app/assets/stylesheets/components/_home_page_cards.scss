@@ -1,64 +1,48 @@
 .card-book {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  margin-bottom: 24px;
   display: flex;
-  align-items: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  gap: 16px;
 
   img {
-    height: 100%;
     width: 120px;
+    height: auto;
     object-fit: cover;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
   }
 
   .card-book-infos {
-    padding: 16px;
-    position: relative;
-    width: 100%;
+    flex: 1;
 
     h2 {
-      font-size: 16px;
-      font-weight: bold;
-      color: $color-text-dark;
-      margin: 0;
+      font-size: 20px;
+      margin: 0 0 8px;
     }
 
     p {
-      font-size: 12px;
-      line-height: 1.4;
-      opacity: 0.7;
-      margin: 8px 0 0 0;
+      margin: 4px 0;
     }
 
     .card-book-meta {
-      position: absolute;
-      top: 10px;
-      right: 10px;
       font-size: 12px;
-      color: $color-secondary;
-      text-align: right;
+      color: #888;
+      margin-top: 10px;
     }
 
     .card-book-button {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background-color: $color-primary;
-      color: $color-text-light;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      cursor: pointer;
-      white-space: nowrap;
+      margin-top: 12px;
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #6C6C38;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
 
       &:hover {
-        background-color: $color-hover;
+        background-color: #555;
       }
     }
   }

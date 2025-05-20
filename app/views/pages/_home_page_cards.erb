@@ -1,12 +1,20 @@
 <div class="card-book">
-  <%= image_tag book.image_url, alt: book.title %>
+  <%= image_tag "default_book.jpg", alt: book.title %>
+
   <div class="card-book-infos">
     <h2><%= book.title %></h2>
     <p><strong><%= book.author %></strong></p>
     <p><%= truncate(book.description, length: 100) %></p>
+
     <div class="card-book-meta">
-      <%= book.created_at.strftime("%d %b %Y") %><br><%= book.location %>
+      Published: <%= book.published_year %><br>
+      <% if book.availability %>
+        <span style="color: green;">Available</span>
+      <% else %>
+        <span style="color: red;">Not Available</span>
+      <% end %>
     </div>
+
     <%= link_to "Rent me!", book_path(book), class: "card-book-button" %>
   </div>
 </div>
