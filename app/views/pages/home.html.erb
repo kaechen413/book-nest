@@ -1,10 +1,17 @@
 <!-- Banner -->
-<section style="padding: 20px; background-color: #FEFAE0;">
+<section style="
+  padding: 20px;
+  background-image: url('<%= asset_path("BooksBg.png") %>');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FEFAE0;">
+
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <!-- Logo -->
     <%= image_tag "BookNestLogo.png", alt: "BookNest Logo", style: "height: 80px;" %>
 
-    <!-- Avatar (Login + Label) -->
+    <!-- Avatar + Label -->
     <div style="text-align: center;">
       <%= link_to new_user_session_path do %>
         <%= image_tag "Avatar.png", alt: "Login", style: "height: 50px; border-radius: 50%; border: 2px solid #606C38;" %>
