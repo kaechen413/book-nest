@@ -1,4 +1,7 @@
 class BookOffer < ApplicationRecord
   belongs_to :user
-  belongs_to :books
+  has_many :bookings
+  belongs_to :book
+
+  validates :availability, presence: true
 end
