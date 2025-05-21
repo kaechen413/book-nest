@@ -1,4 +1,10 @@
-<footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: #DDA15E; display: flex; justify-content: space-around; padding: 12px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); color: #283618;">
+<footer style="position: fixed; bottom: 0; left: 0; width: 100%; background: #DDA15E; display: flex; justify-content: space-around; padding: 12px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); color: #283618; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+  <div style="text-align: center;">
+    <%= link_to root_path, style: "color: #283618; text-decoration: none;" do %>
+      <i class="fas fa-home" style="font-size: 20px;"></i>
+      <p style="margin: 0; font-size: 14px;">Home</p>
+    <% end %>
+  </div>
   <div style="text-align: center;">
     <%= link_to(user_signed_in? ? "#" : "#", style: "color: #283618; text-decoration: none;") do %>
       <i class="fas fa-book" style="font-size: 20px;"></i>
@@ -14,7 +20,7 @@
   <div style="text-align: center;">
     <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, style: "color: #283618; text-decoration: none;") do %>
       <i class="fas fa-cog" style="font-size: 20px;"></i>
-      <p style="margin: 0; font-size: 14px;"><%= user_signed_in? ? "My Settings" : "Login / Sign Up" %></p>
+      <p style="margin: 0; font-size: 14px;"><%= user_signed_in? ? "My Account" : "Login / Sign Up" %></p>
     <% end %>
   </div>
 </footer>
