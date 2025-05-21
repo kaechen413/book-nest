@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'book_offers/search', to: 'book_offers#search', as: :search_book_offers
-
+  namespace :owner do
+    resources :book_offers, only: :index
+  end
   resources :book_offers, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:new, :create]
   end
