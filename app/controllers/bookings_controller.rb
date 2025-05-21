@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
+    @pendings = current_user.bookings.where(status: "pending")
+    @currents = current_user.bookings.where(status: "accepted")
+    @rejected = current_user.bookings.where(status: "rejected")
   end
 
   def new
@@ -22,10 +25,6 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def owner
-    @bookings_as_owner = current_user.bookings_as_owner
   end
 
   private

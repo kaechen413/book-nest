@@ -1,0 +1,17 @@
+<div class="container booking-user-container">
+  <% @bookings_as_owner.each do |booking| %>
+    <div class="booking-card custom-rounded">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="booking-card-infos">
+        <h3><%= booking.book_offer.book.title %></h3>
+        <h2 class="booking-status <%= booking.status %>"> <%= booking.status.capitalize %> </h2>
+        <h3><%= booking.starting_date.strftime("%b %d, %Y")%> - <%= booking.ending_date.strftime("%b %d, %Y")%></h3>
+        <h3><%= booking.book_offer.user.user_name %>'s Book </h3>
+        <div class="text-top">
+          <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <h1>My Pending Reads</h1>
+</div>

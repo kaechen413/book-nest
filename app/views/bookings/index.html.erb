@@ -1,20 +1,53 @@
-<div class="container">
-  <% @bookings.each do |booking| %>
-    <div class="booking-card">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="booking-card-infos">
-        <h2><%= booking.book_offer.book.title %></h2>
-        <h3>Author: <%= booking.book_offer.book.author %> </h3>
-        <h3>Starting Date: <%= booking.starting_date %> </h3>
-        <h3>Due Date: <%= booking.starting_date %>  </h3>
-        <h3>Rented By:  <%= booking.book_offer.user.user_name %> </h3>
-        <div class="text-top">
-          <h2><%= booking.book_offer.user.address %> </h2>
-        </div>
-        <div class="form-check form-switch booking-toggle">
-          <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+<div class="container booking-user-container">
+  <h1>Pending Reads</h1>
+  <% if !@pendings.nil? %>
+    <% @pendings.each do |booking| %>
+      <div class="booking-card custom-rounded">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="booking-card-infos">
+          <h3><%= booking.book_offer.book.title %></h3>
+          <h2 class="booking-status <%= booking.status %>"> <%= booking.status.capitalize %> </h2>
+          <h3><%= booking.starting_date.strftime("%b %d, %Y")%> - <%= booking.ending_date.strftime("%b %d, %Y")%></h3>
+          <h3><%= booking.book_offer.user.user_name %>'s Book </h3>
+          <div class="text-top">
+            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% end %>
+  <h1>Current Reads</h1>
+  <% if !@currents.nil? %>
+    <% @currents.each do |booking| %>
+      <div class="booking-card custom-rounded">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="booking-card-infos">
+          <h3><%= booking.book_offer.book.title %></h3>
+          <h2 class="booking-status <%= booking.status %>"> <%= booking.status.capitalize %> </h2>
+          <h3><%= booking.starting_date.strftime("%b %d, %Y")%> - <%= booking.ending_date.strftime("%b %d, %Y")%></h3>
+          <h3><%= booking.book_offer.user.user_name %>'s Book </h3>
+          <div class="text-top">
+            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <h1>Rejected Reads</h1>
+  <% if !@rejected.nil? %>
+    <% @rejected.each do |booking| %>
+      <div class="booking-card custom-rounded">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="booking-card-infos">
+          <h3><%= booking.book_offer.book.title %></h3>
+          <h2 class="booking-status <%= booking.status %>"> <%= booking.status.capitalize %> </h2>
+          <h3><%= booking.starting_date.strftime("%b %d, %Y")%> - <%= booking.ending_date.strftime("%b %d, %Y")%></h3>
+          <h3><%= booking.book_offer.user.user_name %>'s Book </h3>
+          <div class="text-top">
+            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :edit, :update] do
-    collection do
-      get "owner"
-    end
+  resources :bookings, only: [:index, :edit, :update]
+
+  namespace :owner do
+    resources :bookings, only: :index
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

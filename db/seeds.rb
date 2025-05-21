@@ -18,7 +18,8 @@ Book.destroy_all
 User.destroy_all
 
 puts "Creating default user..."
-user = User.create!(user_name: "JaneDoe", address: "60 Newfoundland Road Cardiff", email: "test@example.com", password: "123456")
+user1 = User.create!(user_name: "Ryan", address: "江戸川区", email: "test1@example.com", password: "123456")
+user2 = User.create!(user_name: "Nathaniel", address: "埼玉県", email: "test2@example.com", password: "123456")
 
 puts "Fetching books from Open Library..."
 url = URI("https://openlibrary.org/search.json?publisher=penguin")
@@ -36,17 +37,15 @@ data["docs"].each do |item|
   )
 end
 
-user_first = User.first
-user_last = User.last
 books = Book.limit(10)
 
 # Create 10 book offers by User.first
 book_offers = books.map.with_index do |book, i|
   BookOffer.create!(
     availability: i.even?, # alternate true/false
-    description: "Book offer ##{i + 1} by #{user_first.user_name}",
-    user: user_first,
-    book: book,
+    description: "Book offer ##{i + 1} by #{user1.user_name}",
+    user: user1,
+    book: book
   )
 end
 
@@ -56,7 +55,7 @@ book_offers.first(5).each_with_index do |offer, i|
     starting_date: Date.today + i,
     ending_date: Date.today + i + 7,
     status: :pending,
-    user: user_last,
+    user: user2,
     book_offer: offer
   )
 end
