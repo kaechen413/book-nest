@@ -9,10 +9,6 @@ class User < ApplicationRecord
 
   validates :user_name, presence: true
   validates :address, presence: true
-  geocoded_by :short_address
+  geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-
-  def short_address
-    address[/.*(?=丁目)/] ? address[/.*(?=丁目)/] + "丁目" : address
-  end
 end
