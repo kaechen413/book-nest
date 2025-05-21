@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-trip">
-    <img src="https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=754&fit=clip" />
+    <%= image_tag @book_offer.book.image_url, alt: @book_offer.book.title %>
     <div class="card-trip-infos">
       <div>
         <h2><%= @book_offer.book.title %> by <%= @book_offer.book.author %></h2>
@@ -13,7 +13,7 @@
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     <p>
       <% if @book_offer.availability == true %>
-        <%= link_to "Get this book", new_book_offer_booking_path(@book_offer, @booking), class:"btn btn-primary"  %>
+        <%= link_to "Get this book", new_book_offer_booking_path(@book_offer, @booking), class: "btn btn-primary"  %>
       <% else %>
         <button type="button" class="btn btn-warning">Unavailable</button>
       <% end %>

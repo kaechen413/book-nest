@@ -7,10 +7,12 @@
   margin-bottom: 24px;
   display: flex;
   gap: 16px;
+  height: 154px;
+  position: relative;
 
   img {
     width: 120px;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -45,5 +47,13 @@
         background-color: #555;
       }
     }
+  }
+
+  .link-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: 0;
   }
 }
