@@ -1,0 +1,36 @@
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #dda15e; // color pastel de tu paleta
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+
+  .header-link {
+    text-decoration: none;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3d2b1f;
+  }
+}
+
+.main-content {
+  padding-top: 70px; // altura del header para que no se superponga
+}
