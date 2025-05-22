@@ -6,21 +6,21 @@
     <% end %>
   </div>
   <div style="text-align: center;">
-    <%= link_to(user_signed_in? ? "#" : "#", style: "color: #283618; text-decoration: none;") do %>
+    <%= link_to(owner_bookings_path, style: "color: #283618; text-decoration: none;" ) do %>
       <i class="fas fa-book" style="font-size: 20px;"></i>
       <p style="margin: 0; font-size: 14px;">My Books</p>
     <% end %>
   </div>
   <div style="text-align: center;">
-    <%= link_to(user_signed_in? ? "#" : "#", style: "color: #283618; text-decoration: none;") do %>
+    <%= link_to(bookings_path, style: "color: #283618; text-decoration: none;" ) do %>
       <i class="fas fa-book-reader" style="font-size: 20px;"></i>
       <p style="margin: 0; font-size: 14px;">Rented</p>
     <% end %>
   </div>
   <div style="text-align: center;">
-    <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, style: "color: #283618; text-decoration: none;") do %>
-      <i class="fas fa-cog" style="font-size: 20px;"></i>
-      <p style="margin: 0; font-size: 14px;"><%= user_signed_in? ? "My Account" : "Login / Sign Up" %></p>
+    <%= link_to("#", style: "color: #283618; text-decoration: none;" ) do %>
+      <i class="fas fa-plus-circle" style="font-size: 20px;"></i>
+      <p style="margin: 0; font-size: 14px;">Add Book</p>
     <% end %>
   </div>
 </footer>
