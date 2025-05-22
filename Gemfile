@@ -52,6 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem "date_validator"
 gem 'kaminari'
+gem "pg_search"
 
 group :development, :test do
   gem "dotenv-rails"

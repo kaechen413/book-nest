@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
-  root to: "pages#home"
+  root to: "books#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'book_offers/search', to: 'book_offers#search', as: :search_book_offers
 
