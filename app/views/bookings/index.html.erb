@@ -1,11 +1,18 @@
 <div class="container booking-user-container">
-  <div class="booking-filters mb-3 d-flex justify-content-around">
-    <%= link_to "Pending Reads", bookings_path(status: "pending"), class: "btn btn-outline-primary rounded-4 fw-bold py-2 px-1 #{'active' if @status == 'pending'}" %>
-    <%= link_to "Current Reads", bookings_path(status: "accepted"), class: "btn btn-outline-success rounded-4 fw-bold py-2 px-1 #{'active' if @status == 'accepted'}" %>
-    <%= link_to "Old Reads", bookings_path(status: "rejected"), class: "btn btn-outline-light-gray rounded-4 fw-bold py-2 px-1 #{'active' if @status == 'rejected'}" %>
+  <div class="booking-filters mb-3">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "Pending Reads", bookings_path(status: "pending"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'pending'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Current Reads", bookings_path(status: "accepted"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'accepted'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Old Reads", bookings_path(status: "rejected"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'rejected'}" %>
+      </li>
+    </ul>
   </div>
   <div class="container booking-user-container">
-    <h1><%= @status.capitalize %> Reads</h1>
     <% @bookings.each do |booking| %>
       <div class="booking-card custom-rounded">
         <%= image_tag booking.book_offer.book.image_url, alt: booking.book_offer.book.title %>

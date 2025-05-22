@@ -6,4 +6,8 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+// for cloudinary
+import "bootstrap"
+import "@popperjs/core"
+
 export { application }
