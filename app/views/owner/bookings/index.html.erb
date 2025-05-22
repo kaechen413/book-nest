@@ -7,7 +7,7 @@
     <%= link_to "Past Bookings", owner_bookings_path(status: "past"), class: "btn #{params[:status] == "past" ? 'btn-dark' : 'btn-outline-dark'}" %>
   </div>
 
-  <!-- dinamic title -->
+  <!-- dynamic title -->
   <h1 class="text-center"><%= (params[:status] || "pending").capitalize %> Requests</h1>
 
   <!-- bookings -->
@@ -31,6 +31,22 @@
             <%= button_to "Decline", [:owner, booking], method: :patch, params: { status: "rejected" }, class: "btn btn-danger btn-sm" %>
           </div>
         <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- My Shared Library section -->
+  <hr class="my-4">
+  <h2 class="text-center mt-4">My Shared Library</h2>
+
+  <% @my_books.each do |book_offer| %>
+    <div class="booking-card custom-rounded">
+      <%= image_tag book_offer.book.image_url, alt: book_offer.book.title %>
+      <div class="booking-card-infos">
+        <h3><%= book_offer.book.title %></h3>
+        <p><strong>Author:</strong> <%= book_offer.book.author %></p>
+        <p><strong>Published:</strong> <%= book_offer.book.published_year %></p>
+        <p><strong>Location:</strong> <%= book_offer.user.address %></p>
       </div>
     </div>
   <% end %>

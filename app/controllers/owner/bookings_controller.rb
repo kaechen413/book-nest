@@ -12,6 +12,8 @@ class Owner::BookingsController < ApplicationController
     when "past"
       @bookings_as_owner = @bookings_as_owner.where("ending_date < ?", Date.today)
     end
+
+    @my_books = BookOffer.where(user: current_user)
   end
 
   def update
