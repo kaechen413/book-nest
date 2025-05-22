@@ -52,6 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem "date_validator"
 gem 'kaminari'
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"
