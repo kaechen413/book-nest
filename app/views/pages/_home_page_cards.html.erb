@@ -1,12 +1,12 @@
 <!-- app/views/pages/_home_page_cards.html.erb -->
 <div class="card-book">
-  <%= image_tag book_offer.book.image_url, alt: book_offer.book.title %>
+  <%= image_tag book.image_url, alt: book.title %>
   <div class="card-book-infos">
-    <h2><%= book_offer.book.title %></h2>
-    <p><strong><%= book_offer.book.author %></strong></p>
+    <h2><%= book.title %></h2>
+    <p><strong><%= book.author %></strong></p>
     <div class="card-book-meta">
-      Published: <%= book_offer.book.published_year %><br>
+      Published: <%= book.published_year %><br>
     </div>
-    <%= link_to "", book_offer_path(book_offer),  class: "link-cover"  %>
+    <%= link_to "", book_path(book),  class: "link-cover"  %>
   </div>
 </div>
