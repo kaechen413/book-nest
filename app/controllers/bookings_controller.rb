@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @book = Book.find(params[:book_id])
     @book_offer = BookOffer.find(params[:book_offer_id])
     @booking = Booking.new
   end
@@ -14,8 +13,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @book_offer = BookOffer.find(params[:book_offer_id])
-    @book = Book.find(params[:book_id])
-    @book_offers = @book.book_offers
+    @book = @book_offer.book
     # TODO: fix this stuff KAE!
     if params[:booking][:starting_date].present?
       dates = params[:booking][:starting_date].split(' to ')

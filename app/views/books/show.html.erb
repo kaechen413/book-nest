@@ -31,7 +31,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Take a book out!</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <%= simple_form_for [@book, book_offer, @booking] do |f| %>
+                  <%= simple_form_for [book_offer, @booking] do |f| %>
                     <div class="modal-body">
                       <%= f.input :starting_date,required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
                     </div>
