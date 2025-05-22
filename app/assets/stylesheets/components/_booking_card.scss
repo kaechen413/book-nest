@@ -22,7 +22,6 @@
 .booking-card h2 {
   font-size: 24px;
   font-weight: bold;
-  margin-top: 8px;
   margin-bottom: 8px;
 }
 
@@ -41,6 +40,7 @@
 }
 
 .booking-card .booking-card-infos {
+  flex-grow: 2;
   padding: 16px;
 }
 
@@ -72,6 +72,8 @@
 .booking-status.rejected{
   color:red;
 }
+
+
 
 .fa-map-pin {
   color: red
