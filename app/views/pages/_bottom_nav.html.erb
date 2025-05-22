@@ -17,10 +17,6 @@
       <p style="margin: 0; font-size: 14px;">Rented</p>
     <% end %>
   </div>
-  <div style="text-align: center;">
-    <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, style: "color: #283618; text-decoration: none;") do %>
-      <i class="fas fa-cog" style="font-size: 20px;"></i>
-      <p style="margin: 0; font-size: 14px;"><%= user_signed_in? ? "My Account" : "Login / Sign Up" %></p>
-    <% end %>
+
   </div>
 </footer>
