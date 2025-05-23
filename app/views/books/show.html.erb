@@ -5,27 +5,34 @@
       <div>
         <h2><%= @book.title %> by <%= @book.author %></h2>
         <p>Published: <%= @book.published_year %></p>
-        <p><%= @description %></p>
-        <p><%- @book.published_year %></p>
       </div>
     </div>
   </div>
   <div class="book-offer-cards">
     <% @book_offers.each do |book_offer| %>
       <div class="book-offer-card">
+        <!-- LEFT: Book Image -->
         <div class="book-offer-infos">
           <% if book_offer.photo.attached? %>
             <%= cl_image_tag book_offer.photo.key %>
           <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <%= image_tag book_offer.book.image_url, alt: book_offer.book.title %>
           <% end %>
         </div>
-        <div class="d-flex flex-column text-end flex-grow-1 mx-3">
+        <!-- CENTER: Book Description -->
+        <div class="book-offer-description">
+          <div>
+            <h5><i class="fa-solid fa-map-pin"></i> <%= book_offer.user.address %></h5>
+          </div>
+          <%= truncate(book_offer.description, length: 300) %>
+        </div>
+        <!-- RIGHT: User + Button -->
+        <div class="book-offer-right">
           <div class="book-offer-user">
             <% if book_offer.user.profile_photo.attached? %>
-              <%= cl_image_tag book_offer.user.profile_photo.key, class:"card-trip-user avatar-bordered"%>
+              <%= cl_image_tag book_offer.user.profile_photo.key, class:"book-offer-img" %>
             <% else %>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class="card-trip-user avatar-bordered" />
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="book-offer-img" />
             <% end %>
           </div>
           <div class="book-offer-button">
@@ -40,7 +47,7 @@
                     </div>
                     <%= simple_form_for [book_offer, @booking] do |f| %>
                       <div class="modal-body">
-                        <%= f.input :starting_date,required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
+                        <%= f.input :starting_date, required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
