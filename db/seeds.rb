@@ -58,16 +58,16 @@ READERS.each_with_index do |reader, index|
   user.profile_photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
   user.save
 
-  book = Book.find_by(title: "Dune")
+  # book = Book.find_by(title: "Dune")
 
-  book_offer = BookOffer.new(
-  availability: true, # alternate true/false
-  description: "Book offer by #{user.user_name}",
-  user: user,
-  book: book
-  )
+  # book_offer = BookOffer.new(
+  # availability: true, # alternate true/false
+  # description: "Book offer by #{user.user_name}",
+  # user: user,
+  # book: book
+  # )
 
-  book_offer.save
+  # book_offer.save
 end
 
 
