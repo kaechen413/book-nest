@@ -1,18 +1,19 @@
 class Owner::BookingsController < ApplicationController
   def index
     @status = params[:status] || "pending"
-    @bookings_as_owner = current_user.bookings_as_owner
 
     case @status
     when "pending"
-      @bookings_as_owner = @bookings_as_owner.where(status: "pending")
+      @bookings_as_owner = current_user.bookings_as_owner.where(status: "pending")
     when "accepted"
-      @bookings_as_owner = @bookings_as_owner.where(status: "accepted").where("ending_date >= ?", Date.today)
-    when "past"
-      @bookings_as_owner = @bookings_as_owner.where("ending_date < ?", Date.today)
+      @bookings_as_owner = current_user.bookings_as_owner.where(status: "accepted").where("ending_date >= ?", Date.today)
+    when "past", "rejected"
+      @bookings_as_owner = current_user.bookings_as_owner.where("ending_date < ?", Date.today)
+    when "shared"
+      @my_books = current_user.book_offers.includes(:book)
+    else
+      @bookings_as_owner = current_user.bookings_as_owner
     end
-
-    @my_books = BookOffer.where(user: current_user)
   end
 
   def update

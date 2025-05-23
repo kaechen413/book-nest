@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book_offers = @book.book_offers
     @booking = Booking.new
+    @booked_periods = Booking.where(book_offer: @book_offers).where.not(status: 'rejected').pluck(:starting_date, :ending_date)
     users = @book_offers.map(&:user).select(&:geocoded?)
     @markers = users.map do |user|
       {
@@ -23,14 +24,11 @@ class BooksController < ApplicationController
           distance: user.distance_to([current_user.latitude, current_user.longitude])
           })
       }
-
     end
 
     @location = {
       lat: current_user.latitude,
       lng: current_user.longitude
     }
-
-
   end
 end
