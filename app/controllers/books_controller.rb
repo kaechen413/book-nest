@@ -21,7 +21,8 @@ class BooksController < ApplicationController
         lng: user.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {
           user: user,
-          distance: user.distance_to([current_user.latitude, current_user.longitude])
+          distance: user.distance_to([current_user.latitude, current_user.longitude]),
+          book_offer: user.book_offers.first
           })
       }
     end

@@ -1,9 +1,4 @@
 <div class="container">
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-location-value="<%= @location.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <div class="card-trip">
     <%= image_tag @book.image_url, alt: @book.title %>
     <div class="card-trip-infos">
@@ -13,9 +8,14 @@
       </div>
     </div>
   </div>
+  <div style="width: 100%; height: 300px; margin: 30px 0; border-radius: 16px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-location-value="<%= @location.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <div class="book-offer-cards">
     <% @book_offers.each do |book_offer| %>
-      <div class="book-offer-card">
+      <div class="book-offer-card justify-content-between">
         <!-- LEFT: Book Image -->
         <div class="book-offer-infos">
           <% if book_offer.photo.attached? %>
@@ -27,7 +27,7 @@
         <!-- CENTER: Book Description -->
         <div class="book-offer-description">
           <div>
-            <h5><i class="fa-solid fa-map-pin"></i> <%= book_offer.user.address %></h5>
+            <h5><i class="fa-solid fa-map-pin"></i> <%= book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></h5>
           </div>
           <%= truncate(book_offer.description, length: 300) %>
         </div>

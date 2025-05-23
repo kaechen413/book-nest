@@ -45,7 +45,7 @@
           <h3><%= book_offer.book.title %></h3>
           <p><strong>Author:</strong> <%= book_offer.book.author %></p>
           <p><strong>Published:</strong> <%= book_offer.book.published_year %></p>
-          <p><strong>Location:</strong> <%= book_offer.user.address %></p>
+          <p><strong>Location:</strong> <%= book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></p>
         </div>
       </div>
     <% end %>
