@@ -66,10 +66,8 @@ READERS.each_with_index do |reader, index|
   user: user,
   book: book
   )
-  photo_url_2 = ["https://res.cloudinary.com/daag70mt3/image/upload/v1747985324/production/g0jazhn0nyutpx6y4c6jduthavgr.webp",
-  "https://res.cloudinary.com/daag70mt3/image/upload/v1747985251/production/lr9ofb6arp60oons5wn99swnmxvo.webp",
-"https://res.cloudinary.com/daag70mt3/image/upload/v1747985149/production/vy6ime3hggu5scl95m9g40vx931a.webp"]
-  file_2 = URI.open(photo_url_2.sample)
+  photo_url_2 = ["dune2.jpg", "dune3.jpeg", "dune4.jpg", "dune5.jpg"]
+  file_2 = File.open("./app/assets/images/#{photo_url_2.sample}")
   book_offer.photo.attach(io: file_2, filename: 'user.png', content_type: 'image/png')
 
 
