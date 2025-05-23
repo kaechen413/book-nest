@@ -23,26 +23,12 @@
         </div>
         <div class="book-offer-button">
           <% if book_offer.availability == true %>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Get it</button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Take a book out!</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <%= simple_form_for [book_offer, @booking] do |f| %>
-                    <div class="modal-body">
-                      <%= f.input :starting_date,required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <%= f.submit :submit, class: "btn btn-success" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+            <% if user_signed_in? %>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Get it</button>
+              <%= render "modal", book_offer: book_offer, booking: @booking %>
+            <% else %>
+              <button type="button" class="btn btn-warning disabled">Sign in to get the book</button>
+            <% end %>
           <% else %>
             <button type="button" class="btn btn-warning">Unavailable</button>
           <% end %>
