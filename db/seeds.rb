@@ -48,8 +48,11 @@ READERS.each_with_index do |reader, index|
     email: "test#{index}@gmail.com",
     password: '123123',
     user_name: reader,
-    address: "日本, 〒153-0063 東京都目黒区 目黒#{rand(1..3)}丁目#{rand(1..10)}番#{rand(1..3)}号"
+    address: "日本, 〒153-0063 東京都目黒区 目黒#{rand(1..3)}丁目#{rand(1..7)}番#{rand(1..3)}号",
+    latitude: rand(35.64132351477831...35.622592654954566),
+    longitude:rand(139.68341078703912...139.7128936270011)
   )
+
   url = "https://this-person-does-not-exist.com/new?gender=#{GENDER.sample}&age=#{'50+'}"
   json = URI.open(url).string
   src = JSON.parse(json)['src']
