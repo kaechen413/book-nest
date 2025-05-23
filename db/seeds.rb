@@ -58,16 +58,22 @@ READERS.each_with_index do |reader, index|
   user.profile_photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
   user.save
 
-  # book = Book.find_by(title: "Dune")
+  book = Book.find_by(title: "Dune")
 
-  # book_offer = BookOffer.new(
-  # availability: true, # alternate true/false
-  # description: "Book offer by #{user.user_name}",
-  # user: user,
-  # book: book
-  # )
+  book_offer = BookOffer.new(
+  availability: true, # alternate true/false
+  description: "Book offer by #{user.user_name}",
+  user: user,
+  book: book
+  )
+  photo_url = ["https://res.cloudinary.com/daag70mt3/image/upload/v1747985324/production/g0jazhn0nyutpx6y4c6jduthavgr.webp",
+  "https://res.cloudinary.com/daag70mt3/image/upload/v1747985251/production/lr9ofb6arp60oons5wn99swnmxvo.webp",
+"https://res.cloudinary.com/daag70mt3/image/upload/v1747985149/production/vy6ime3hggu5scl95m9g40vx931a.webp"]
+  file = URI.open(photo_url.sample)
+  book_offer.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 
-  # book_offer.save
+
+  book_offer.save
 end
 
 

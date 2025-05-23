@@ -41,7 +41,7 @@
             <% end %>
           </div>
           <div class="book-offer-button">
-            <% if book_offer.availability == true %>
+            <% if book_offer.availability %>
               <% if user_signed_in? %>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Get it</button>
                 <%= render "modal", book_offer: book_offer, booking: @booking %>
