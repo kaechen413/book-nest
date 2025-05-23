@@ -10,7 +10,7 @@
         <p>"Reviews will go here"</p>
       </div>
     </h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <%= cl_image_tag @book_offer.user.profile_photo, class:"card-trip-user avatar-bordered", height: 300, width: 400, crop: :fill %>
     <p>
       <% if @book_offer.availability == true %>
         <%= link_to "Get this book", new_book_offer_booking_path(@book_offer, @booking), class: "btn btn-primary"  %>

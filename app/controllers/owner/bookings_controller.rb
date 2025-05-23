@@ -1,8 +1,7 @@
 class Owner::BookingsController < ApplicationController
   def index
     @status = params[:status] || "pending"
-
-    @bookings_as_owner = Booking.joins(:book_offer).where(book_offers: { user: current_user })
+    @bookings_as_owner = current_user.bookings_as_owner
 
     case @status
     when "pending"

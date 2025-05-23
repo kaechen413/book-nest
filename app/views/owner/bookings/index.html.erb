@@ -1,44 +1,44 @@
-<div class="container booking-user-container">
-
+<div class="container booking-user-container mt-2">
   <!-- top filters -->
-  <div class="booking-filters d-flex justify-content-around mb-4">
-    <%= link_to "Pending Requests", owner_bookings_path(status: "pending"), class: "btn #{params[:status] == "pending" || params[:status].nil? ? 'btn-dark' : 'btn-outline-dark'}" %>
-    <%= link_to "Current Bookings", owner_bookings_path(status: "accepted"), class: "btn #{params[:status] == "accepted" ? 'btn-dark' : 'btn-outline-dark'}" %>
-    <%= link_to "Past Bookings", owner_bookings_path(status: "past"), class: "btn #{params[:status] == "past" ? 'btn-dark' : 'btn-outline-dark'}" %>
+  <div class="booking-filters">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "Pending Requests", owner_bookings_path(status: "pending"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'pending'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Current Bookings", owner_bookings_path(status: "accepted"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'accepted'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "History", owner_bookings_path(status: "past"), class: "fw-bold nav-link rounded-2 p-2 #{'active' if @status == 'rejected'}"  %>
+      </li>
+    </ul>
   </div>
-
-  <!-- dynamic title -->
-  <h1 class="text-center"><%= (params[:status] || "pending").capitalize %> Requests</h1>
-
+  <div class="booking-filters d-flex justify-content-around mb-4">
+  </div>
   <!-- bookings -->
   <% @bookings_as_owner.each do |booking| %>
     <div class="booking-card custom-rounded">
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" %>
-
       <div class="booking-card-infos">
         <div class="d-flex justify-content-between mb-0">
           <h3><%= booking.book_offer.book.title %></h3>
           <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
         </div>
-
-        <h2 class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></h2>
-        <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
-        <h3><%= booking.book_offer.user.user_name %>'s Book</h3>
-
         <% if booking.status == "pending" %>
-          <div style="display: flex; gap: 10px; margin-top: 10px;">
-            <%= button_to "Accept", [:owner, booking], method: :patch, params: { status: "accepted" }, class: "btn btn-success btn-sm" %>
-            <%= button_to "Decline", [:owner, booking], method: :patch, params: { status: "rejected" }, class: "btn btn-danger btn-sm" %>
+          <div class="d-flex gap-2 w-100 mb-2">
+            <%= button_to "Accept", [:owner, booking], method: :patch, params: { status: "accepted" }, class: "btn btn-success px-4 rounded-3" %>
+            <%= button_to "Decline", [:owner, booking], method: :patch, params: { status: "rejected" }, class: "btn btn-danger px-4 rounded-3" %>
           </div>
         <% end %>
+        <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
+        <%# edited the text request, originally Ryan's Book. %>
+        <h3><%= booking.user.user_name %>'s Requests</h3>
       </div>
     </div>
   <% end %>
-
   <!-- My Shared Library section -->
   <hr class="my-4">
   <h2 class="text-center mt-4">My Shared Library</h2>
-
   <% @my_books.each do |book_offer| %>
     <div class="booking-card custom-rounded">
       <%= image_tag book_offer.book.image_url, alt: book_offer.book.title %>
@@ -50,6 +50,5 @@
       </div>
     </div>
   <% end %>
-
 </div>
 a
