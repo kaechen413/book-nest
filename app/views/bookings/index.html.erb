@@ -5,7 +5,6 @@
     <%= link_to "Current Reads", bookings_path(status: "accepted"), class: "tab-link #{'active' if @status == 'accepted'}" %>
     <%= link_to "Old Reads", bookings_path(status: "rejected"), class: "tab-link #{'active' if @status == 'rejected'}" %>
   </div>
-
   <!-- Bookings list -->
   <div class="container booking-user-container">
     <% @bookings.each do |booking| %>
@@ -14,7 +13,7 @@
         <div class="booking-card-infos">
           <div class="d-flex justify-content-between mb-0">
             <h3><%= booking.book_offer.book.title %></h3>
-            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address %></h3>
+            <h3><i class="fa-solid fa-map-pin"></i> <%= booking.book_offer.user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></h3>
           </div>
           <h2 class="booking-status <%= booking.status %>"><%= booking.status.capitalize %></h2>
           <h3><%= booking.starting_date.strftime("%b %d, %Y") %> - <%= booking.ending_date.strftime("%b %d, %Y") %></h3>
