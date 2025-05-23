@@ -13,6 +13,7 @@ export default class extends Controller {
     }));
     flatpickr(this.element, {
       mode: "range",
+      minDate: "today",
       disable: bookedRanges
     });
   }
