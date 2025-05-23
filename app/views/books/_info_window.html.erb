@@ -1,0 +1,7 @@
+<div class="map-info-window">
+  <div class="header">
+    <p><%= user.address.match(/都(?<ward>[^ ]*区)/)[:ward] %></p>
+  </div>
+  <h2><%= user.user_name %></h2>
+  <p><%= distance.round(2) %>km away</p>
+</div>
