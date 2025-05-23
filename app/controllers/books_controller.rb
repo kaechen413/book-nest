@@ -13,5 +13,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book_offers = @book.book_offers
     @booking = Booking.new
+    @booked_periods = Booking.where(book_offer: @book_offers).where.not(status: 'rejected').pluck(:starting_date, :ending_date)
   end
 end
