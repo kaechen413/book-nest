@@ -14,41 +14,48 @@
     <% @book_offers.each do |book_offer| %>
       <div class="book-offer-card">
         <div class="book-offer-infos">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% if book_offer.photo.attached? %>
+            <%= cl_image_tag book_offer.photo.key %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
         </div>
         <div class="d-flex flex-column text-end flex-grow-1 mx-3">
           <div class="book-offer-user">
-            <%# <h3>offer by <%= book_offer.user.user_name %></h3>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="book-offer-img" />
-        </div>
-        <div class="book-offer-button">
-          <% if book_offer.availability == true %>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Get it</button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Take a book out!</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <% if book_offer.user.profile_photo.attached? %>
+              <%= cl_image_tag book_offer.user.profile_photo.key, class:"card-trip-user avatar-bordered"%>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class="card-trip-user avatar-bordered" />
+            <% end %>
+          </div>
+          <div class="book-offer-button">
+            <% if book_offer.availability == true %>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Get it</button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Take a book out!</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <%= simple_form_for [book_offer, @booking] do |f| %>
+                      <div class="modal-body">
+                        <%= f.input :starting_date,required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <%= f.submit :submit, class: "btn btn-success" %>
+                      </div>
+                    <% end %>
                   </div>
-                  <%= simple_form_for [book_offer, @booking] do |f| %>
-                    <div class="modal-body">
-                      <%= f.input :starting_date,required: true, label: 'rental time', as: :string, input_html: { data: { controller: "datepicker" } } %>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <%= f.submit :submit, class: "btn btn-success" %>
-                    </div>
-                  <% end %>
                 </div>
               </div>
-            </div>
-          <% else %>
-            <button type="button" class="btn btn-warning">Unavailable</button>
-          <% end %>
+            <% else %>
+              <button type="button" class="btn btn-warning">Unavailable</button>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>

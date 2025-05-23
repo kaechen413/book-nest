@@ -13,8 +13,6 @@ class BookOffersController < ApplicationController
     @book = Book.find(book_offer_params[:book_id])
     @book_offer.user = current_user
     @book_offer.book = @book
-
-
     if @book_offer.save
       # TODO: change path once the new books index is made
       redirect_to owner_bookings_path
