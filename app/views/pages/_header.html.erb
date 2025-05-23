@@ -1,20 +1,22 @@
-<header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 85px;">
+<header class="main-header">
   <%= link_to "#", data: { controller: "scroll-top" }, class: "header-link" do %>
-    <div class="logo-container" style="display: flex; flex-direction: column; align-items: flex-start;">
-      <div style="display: flex; align-items: center;">
-        <%= image_tag("BookNestLogoNoName.png", alt: "BookNest Logo", class: "logo", style: "height: 50px;") %>
-        <span class="brand-name" style="margin-left: 10px; font-size: 22px;">Book Nest</span>
+    <div class="logo-container">
+      <div class="logo-title">
+        <%= image_tag("BookNestLogoNoName.png", alt: "BookNest Logo", class: "logo") %>
+        <span class="brand-name">Book Nest</span>
       </div>
-      <span style="font-size: 13.5px; font-style: italic; color: #444; margin-top: 4px; margin-left: 58px;">
-        Powered by passion, shared for free.
-      </span>
+      <span class="header-slogan">Powered by passion, shared for free.</span>
     </div>
   <% end %>
 
-  <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, style: "color: #283618; text-decoration: none; text-align: center;") do %>
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <i class="fas fa-cog" style="font-size: 26px;"></i>
-      <p style="margin: 0; font-size: 16px;"><%= user_signed_in? ? "My Account" : "Login / Sign Up" %></p>
+  <%= link_to(user_signed_in? ? edit_user_registration_path : new_user_session_path, class: "header-account-link") do %>
+    <div class="account-info">
+      <% if user_signed_in? && current_user.respond_to?(:avatar) && current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar.variant(resize_to_fill: [36, 36]), class: "profile-avatar" %>
+      <% else %>
+        <i class="fas fa-user-circle default-avatar-icon"></i>
+      <% end %>
+      <p class="account-label">Account</p>
     </div>
   <% end %>
 </header>

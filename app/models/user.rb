@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :book_offers, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :bookings_as_owner, through: :book_offers, source: :bookings
+  has_one_attached :profile_photo
 
   validates :user_name, presence: true
   validates :address, presence: true
