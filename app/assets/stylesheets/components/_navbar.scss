@@ -31,3 +31,18 @@
   margin: 0;
   font-size: 14px;
 }
+
+.bottom-nav .nav-link.active {
+  background-color: #dda15e;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.footer-nav.active {
+  color: #bc6c25;
+  font-weight: bold;
+
+  .nav-icon {
+    color: #bc6c25;
+  }
+}

@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <div class="flash flash-notice" data-controller="flash"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="flash flash-alert" data-controller="flash"><%= alert %></div>
+    <% end %>
 
     <% unless controller_name == 'home' && action_name == 'index' %>
       <%= render 'pages/header' %>

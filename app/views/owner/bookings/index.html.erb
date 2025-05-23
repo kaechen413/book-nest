@@ -34,8 +34,6 @@
 
   <!-- My Shared Library section -->
   <% if @status == 'shared' %>
-    <hr class="my-4">
-    <h2 class="text-center mt-4">My Shared Library</h2>
     <% @my_books.each do |book_offer| %>
       <div class="booking-card custom-rounded">
         <%= image_tag book_offer.book.image_url, alt: book_offer.book.title %>
